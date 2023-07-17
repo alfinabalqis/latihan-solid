@@ -1,6 +1,9 @@
 import { createSignal } from 'solid-js';
+import { Routes, Route, A } from "@solidjs/router";
+
 import banner from './assets/banner.png'
-import Card from './components/Card';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
 
 function App() {
   const [darkTheme, setDarkTheme] = createSignal(false)
@@ -10,6 +13,7 @@ function App() {
   }
 
   return (
+    // ini muncul di segala page
     <div class="container m-auto">
       <header 
         class="my-4 p-2 text-xl flex items-center gap-4"
@@ -21,23 +25,18 @@ function App() {
         </span>
 
         <h1>Ninja Merch</h1>
+
+        <A href="/">Home</A>
+        <A href="/cart">Cart</A>
       </header>
 
       <img class="rounded-md" src={banner} alt="Site Banner" />
 
-      <div class="grid grid-cols-4 gap-10 my-4">
-        <Card title="Ninja Tee" rounded={true} flat={false}>
-          <h2>Ninja Hatori</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <button class="btn">View</button>
-        </Card>
-        <Card title="Ninja Tote Bag" rounded={false} flat={true}>
-          <h2>Ninja Hatori</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <p>Price $10</p>
-          <button class="btn">View</button>
-        </Card>
-      </div>
+      <Routes>
+        <Route path="/" component={Home}/>
+        <Route path="/cart" component={Cart}/>
+      </Routes>
+      
     </div>
   );
 }
