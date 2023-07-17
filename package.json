@@ -1,7 +1,7 @@
 {
   "name": "vite-template-solid",
   "version": "0.0.0",
-  "description": "",
+  "description": "Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -20,5 +20,15 @@
   "dependencies": {
     "@solidjs/router": "^0.8.2",
     "solid-js": "^1.7.6"
-  }
+  },
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alfinabalqis/latihan-solid.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/alfinabalqis/latihan-solid/issues"
+  },
+  "homepage": "https://github.com/alfinabalqis/latihan-solid#readme"
 }
