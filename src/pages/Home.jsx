@@ -3,24 +3,28 @@ import Card from "../components/Card"
 
 const fetchProducts = async() => {
     const res = await fetch('http://localhost:4000/products')
+
     return res.json()
 }
 
 export default function Home(){
-    const [products] = createResource()
+    const [products] = createResource(fetchProducts)
+
     return(
-        <div class="grid grid-cols-4 gap-10 my-4">
-            <Card title="Ninja Tee" rounded={true} flat={false}>
-                <h2>Ninja Hatori</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <button class="btn">View</button>
-            </Card>
-            <Card title="Ninja Tote Bag" rounded={false} flat={true}>
-                <h2>Ninja Hatori</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <p>Price $10</p>
-                <button class="btn">View</button>
-            </Card>
-        </div>
+        <Show when={products()} fallback={<p>Loading . . . </p>}>
+            <div class="grid grid-cols-4 gap-10 my-4">
+                <For each={products()}>
+                    {(product) => (
+                        <Card rounded={true} flat={true}>
+                            <img src={product.img} alt="Product Image" />
+                            <h2 class="my-3 font-bold">{product.title}</h2>
+                            {/* <h3>{product.description}</h3>
+                            <h4>{product.price}</h4> */}
+                        </Card>
+                    )}
+
+                </For>
+            </div>
+        </Show>
     )
 }
