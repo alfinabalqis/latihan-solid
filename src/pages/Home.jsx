@@ -1,4 +1,6 @@
+import { A } from "@solidjs/router"
 import { createResource } from "solid-js"
+
 import Card from "../components/Card"
 
 const fetchProducts = async() => {
@@ -18,8 +20,7 @@ export default function Home(){
                         <Card rounded={true} flat={true}>
                             <img src={product.img} alt="Product Image" />
                             <h2 class="my-3 font-bold">{product.title}</h2>
-                            {/* <h3>{product.description}</h3>
-                            <h4>{product.price}</h4> */}
+                            <A href={"/product/" + product.id} class="btn">View Product</A>
                         </Card>
                     )}
 
